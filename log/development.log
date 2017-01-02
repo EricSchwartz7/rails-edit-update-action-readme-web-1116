@@ -421,3 +421,74 @@ Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4
 
 
 Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-12-31 14:38:13 -0600
+
+
+Started GET "/posts/new" for ::1 at 2017-01-01 19:48:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 849ms (Views: 837.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/posts" for ::1 at 2017-01-01 19:49:00 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E2kvTYJz4IXIiFpmI6wKrGAnLfk5sxVAHK56P8e2xMSbQ/EoeLxCE2FHkq7OWCfEORk8kksToNh8QniTbbms+g==", "title"=>"new post", "description"=>"this is the description", "commit"=>"Submit Post"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "new post"], ["description", "this is the description"], ["created_at", "2017-01-02 00:49:00.651921"], ["updated_at", "2017-01-02 00:49:00.651921"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 13ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/posts/3" for ::1 at 2017-01-01 19:49:00 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 18ms (Views: 12.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/3/edit" for ::1 at 2017-01-01 19:49:10 -0500
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered posts/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.1ms)
+
+
+Started PUT "/posts/3" for ::1 at 2017-01-01 19:49:15 -0500
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vSCvHVhNJFFSdqlDnkfroxJ4pgNncMIP8smQ/8cXQZ01CnF4ooKGx/u5YYtzs8bLS0a3aBXQd5eSJZJTbRgpow==", "title"=>"newest post", "description"=>"this is the description", "commit"=>"Submit Post", "id"=>"3"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "posts" SET "title" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["title", "newest post"], ["updated_at", "2017-01-02 00:49:15.304489"], ["id", 3]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/posts/3" for ::1 at 2017-01-01 19:49:15 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered posts/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.1ms)
+
+
+Started PUT "/posts/3" for ::1 at 2017-01-01 19:50:03 -0500
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vSCvHVhNJFFSdqlDnkfroxJ4pgNncMIP8smQ/8cXQZ01CnF4ooKGx/u5YYtzs8bLS0a3aBXQd5eSJZJTbRgpow==", "title"=>"newest posting", "description"=>"this is the better description", "commit"=>"Submit Post", "id"=>"3"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "posts" SET "title" = ?, "description" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["title", "newest posting"], ["description", "this is the better description"], ["updated_at", "2017-01-02 00:50:03.732176"], ["id", 3]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/3" for ::1 at 2017-01-01 19:50:03 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered posts/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.1ms)
